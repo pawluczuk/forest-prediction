@@ -23,13 +23,12 @@ hello <- function() {
   print(table(training_data$Cover_Type))
   hist(training_data$Cover_Type, main="Histogram of forest types in training set", xlab="Forest Cover type", xlim=c(0,8))
 
-  names = c("Nazwa atrybutu", "Typ atrybutu", "Brakujące wartości", "Unikalne wartości", "Max", "Min", "Średnia", "Mediana", "Odchylenie standardowe")
+  names = c("Nazwa atrybutu", "Typ atrybutu", "Brakujące wartości", "Unikalne wartości", "Max", "Min", "Średnia", "Mediana", "Odchylenie standardowe", "Korelacja z klasą wyjściową")
 
   mx <- matrix(NA, nrow = length(names(training_data)), ncol = length(names), byrow = TRUE)
   counter <- 1
   for (i in names(training_data)) {
-    print(i)
-    print(counter)
+
     if (class(training_data[[paste(i)]]) == "integer") {
 
       vector <- c(i,
@@ -40,7 +39,9 @@ hello <- function() {
                   min(training_data[paste(i)]),
                   mean(training_data[[paste(i)]]),
                   median(training_data[[paste(i)]]),
-                  sd(training_data[[paste(i)]]))
+                  sd(training_data[[paste(i)]]),
+                  cor(training_data$Cover_Type, training_data[paste(i)])
+                  )
       mx[counter,] <- vector
       counter <- counter+1
 
@@ -56,7 +57,14 @@ hello <- function() {
     }
 
   }
+
+  print("Podusmowanie wartości atrybutów")
+  #write.csv(mx, "table.csv")
   colnames(mx) <- names
   print(mx)
+  
+  print("Macierz korelacji")
+  #cor(training_data, use="complete.obs", method="kendall")
+  
 
   }
