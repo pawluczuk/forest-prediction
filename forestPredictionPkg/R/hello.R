@@ -17,6 +17,7 @@ hello <- function() {
   require(ggplot2)
   require(rmarkdown)
   require(shiny)
+  require(e1071)
 
   # read script for merging data
   if(!exists("merge_testdata", mode="function"))
@@ -24,6 +25,9 @@ hello <- function() {
   # read script for printing statistics
   if(!exists("print_statistics", mode="function"))
     source(system.file("print_statistics.R", package = "forestPredictionPkg"))
+  # read script for naive bayes classification
+  if(!exists("naive_bayes", mode="function"))
+    source(system.file("naive_bayes.R", package = "forestPredictionPkg"))
 
   print("Reading training data.")
 
@@ -35,7 +39,31 @@ hello <- function() {
     training_data <- merge_testdata(training_data)
     saveRDS(training_data,file=paste(path.package("forestPredictionPkg"), "/train.Rda", sep=""))
   }
+
+  # load data
   data <- readRDS(system.file("train.Rda", package = "forestPredictionPkg"))
+
+  # split data into training and testing set
+  splits <- splitdf(data, seed=808)
+  training <- splits$trainset
+  testing <- splits$testset
+
+  # Naive Bayes classification
+  naive_bayes(training, testing)
+
   # print statistics
-  print_statistics(data)
+  # uncomment for Shiny document
+  # print_statistics(data)
+
+  # model quality
+  # caret library - confusion matrix!!
+}
+
+splitdf <- function(dataframe, seed=NULL) {
+  if (!is.null(seed)) set.seed(seed)
+  index <- 1:nrow(dataframe)
+  trainindex <- sample(index, trunc(length(index)/2))
+  trainset <- dataframe[trainindex, ]
+  testset <- dataframe[-trainindex, ]
+  list(trainset=trainset,testset=testset)
 }

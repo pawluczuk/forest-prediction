@@ -1,11 +1,5 @@
 print_statistics <- function(training_data) {
   # Statisticts
-  cat("\nNumber of training examples: ", length(training_data[,1]))
-  cat("\nNumber of variables: ", length(training_data))
-  cat("\nDistribution of forest cover types:")
-  print(table(training_data$Cover_Type))
-  hist(training_data$Cover_Type, main="Histogram of forest types in training set", xlab="Forest Cover type", xlim=c(0,8))
-
   names = c("Nazwa atrybutu", "Typ atrybutu", "Brakujące wartości", "Unikalne wartości", "Max", "Min", "Średnia", "Mediana", "Odchylenie standardowe", "Korelacja z klasą wyjściową")
 
   mx <- matrix(NA, nrow = length(names(training_data)), ncol = length(names), byrow = TRUE)
@@ -33,21 +27,7 @@ print_statistics <- function(training_data) {
   colnames(mx) <- names
 
   print("Podusmowanie wartości atrybutów")
-  #write.csv(mx, "table.csv")
+  write.csv(x = mx, file = paste(path.package("forestPredictionPkg"), "/table.csv", sep=""))
 
-  print(mx)
-
-  print("Macierz korelacji")
-
-  hist(x=training_data$Cover_Type,
-       main="Rozkład wartości typów lasu w danych traningowych",
-       xlab="Typ lasu",
-       ylab="Ilość przykładów")
-
-  rmarkdown::render(system.file("report.Rmd",
-      package = "forestPredictionPkg"),
-      params = list(
-        table = mx
-  ))
   rmarkdown::run(system.file("report.Rmd", package = "forestPredictionPkg"))
 }
