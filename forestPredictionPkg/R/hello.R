@@ -14,57 +14,28 @@
 #   Test Package:              'Cmd + Shift + T'
 
 hello <- function() {
+  require(ggplot2)
+  require(rmarkdown)
+  require(shiny)
+
+  # read script for merging data
+  if(!exists("merge_testdata", mode="function"))
+    source(system.file("merge_testdata.R", package = "forestPredictionPkg"))
+  # read script for printing statistics
+  if(!exists("print_statistics", mode="function"))
+    source(system.file("print_statistics.R", package = "forestPredictionPkg"))
+
   print("Reading training data.")
-  training_data <- read.csv("data/train.csv")
-  # Statisticts
-  cat("\nNumber of training examples: ", length(training_data[,1]))
-  cat("\nNumber of variables: ", length(training_data))
-  cat("\nDistribution of forest cover types:")
-  print(table(training_data$Cover_Type))
-  hist(training_data$Cover_Type, main="Histogram of forest types in training set", xlab="Forest Cover type", xlim=c(0,8))
 
-  names = c("Nazwa atrybutu", "Typ atrybutu", "Brakujące wartości", "Unikalne wartości", "Max", "Min", "Średnia", "Mediana", "Odchylenie standardowe", "Korelacja z klasą wyjściową")
+  # read training data
 
-  mx <- matrix(NA, nrow = length(names(training_data)), ncol = length(names), byrow = TRUE)
-  counter <- 1
-  for (i in names(training_data)) {
-
-    if (class(training_data[[paste(i)]]) == "integer") {
-
-      vector <- c(i,
-                  class(training_data[[paste(i)]]),
-                  sum(is.na(training_data[paste(i)])),
-                  length(unique(training_data[paste(i)])),
-                  max(training_data[paste(i)]),
-                  min(training_data[paste(i)]),
-                  mean(training_data[[paste(i)]]),
-                  median(training_data[[paste(i)]]),
-                  sd(training_data[[paste(i)]]),
-                  cor(training_data$Cover_Type, training_data[paste(i)])
-                  )
-      mx[counter,] <- vector
-      counter <- counter+1
-
-    }
-    else {
-      vector <- c(i,
-                  class(training_data[[paste(i)]]),
-                  sum(is.na(training_data[paste(i)])),
-                  length(unique(training_data[paste(i)]))
-                )
-      mx[counter,] <- vector
-      counter <- counter+1
-    }
-
+  if(!file.exists(system.file("train.Rda", package = "forestPredictionPkg"))) {
+    training_data_path <- system.file("train.csv", package = "forestPredictionPkg")
+    training_data <- read.csv(training_data_path)
+    training_data <- merge_testdata(training_data)
+    saveRDS(training_data,file=paste(path.package("forestPredictionPkg"), "/train.Rda", sep=""))
   }
-
-  print("Podusmowanie wartości atrybutów")
-  #write.csv(mx, "table.csv")
-  colnames(mx) <- names
-  print(mx)
-  
-  print("Macierz korelacji")
-  #cor(training_data, use="complete.obs", method="kendall")
-  
-
-  }
+  data <- readRDS(system.file("train.Rda", package = "forestPredictionPkg"))
+  # print statistics
+  print_statistics(data)
+}
