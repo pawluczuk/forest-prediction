@@ -10,6 +10,7 @@ merge_testdata <- function(data) {
   }
 
   attrs_to_drop <- names(data)[grep("Wilderness_Area[1-9]|Soil_Type[1-9]", names(data))]
+  data$Cover_Type <- as.factor(data$Cover_Type)
   data[ , !(names(data) %in% attrs_to_drop)]
 }
 

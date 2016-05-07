@@ -4,7 +4,6 @@ naive_bayes <- function(training, testing) {
     subset(training, select = -Cover_Type),
     training$Cover_Type
   )
-
   predictions <- predict(classifier, subset(testing, select = -Cover_Type))
   table(predictions, testing$Cover_Type)
 }
