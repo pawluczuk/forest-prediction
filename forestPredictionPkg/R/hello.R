@@ -18,6 +18,8 @@ hello <- function() {
   require(rmarkdown)
   require(shiny)
   require(e1071)
+  require(caret)
+  require(class)
 
   # read script for merging data
   if(!exists("merge_testdata", mode="function"))
@@ -28,6 +30,9 @@ hello <- function() {
   # read script for naive bayes classification
   if(!exists("naive_bayes", mode="function"))
     source(system.file("naive_bayes.R", package = "forestPredictionPkg"))
+  # read script for naive bayes classification
+  if(!exists("knn_classf", mode="function"))
+    source(system.file("knn_classifier.R", package = "forestPredictionPkg"))
 
   print("Reading training data.")
 
@@ -49,7 +54,16 @@ hello <- function() {
   testing <- splits$testset
 
   # Naive Bayes classification
-  naive_bayes(training, testing)
+  nb <- naive_bayes(training, testing)
+  print("Naive Bayes: ")
+  nb_cm <- confusionMatrix(nb)
+  print(nb_cm)
+
+  # kNN classification
+  knn <- knn_classf(training, testing)
+  print("kNN: ")
+  knn_cm <- confusionMatrix(knn)
+  print(knn_cm)
 
   # print statistics
   # uncomment for Shiny document
