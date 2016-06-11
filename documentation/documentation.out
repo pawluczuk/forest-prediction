@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.1}{Interpretacja tematu projektu}{}% 1
+\BOOKMARK [1][-]{section.2}{Opis algorytm\363w wykorzystanych w badaniach}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Algorytm K-najblizszych sasiad\363w}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Drzewo decyzyjne - algorytm C4.5}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Naiwny klasyfikator bayesowski}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Plan badan}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Cel badan}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Charakterystyka zbior\363w danych i ich przygotowanie}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Kolumny danych}{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Typy obszar\363w}{subsection.3.2}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Rodzaje gleb}{subsection.3.2}% 11
+\BOOKMARK [1][-]{section.4}{Wstepna analiza danych}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Podsumowanie dostepnych danych}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Atrybut dyskretny reprezentujacy pojecie docelowe}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Przetworzenie do odpowiedniej postaci}{section.4}% 15
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Modyfikacja atrybut\363w}{subsection.4.3}% 16
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Eliminacja/naprawa defekt\363w danych}{subsection.4.3}% 17
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Modyfikacja rozk\233adu klas}{subsection.4.3}% 18
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Losowanie podzbior\363w danych}{subsection.4.3}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Mozliwosc zdefiniowania nowych atrybut\363w}{subsection.4.3}% 20
+\BOOKMARK [3][-]{subsubsection.4.3.6}{Ustalenie kryteri\363w lub algorytmu selekcji atrybut\363w}{subsection.4.3}% 21
+\BOOKMARK [3][-]{subsubsection.4.3.7}{Miary jakosci i ocena modelu}{subsection.4.3}% 22
+\BOOKMARK [1][-]{section.5}{Implementacja i wyniki}{}% 23
+\BOOKMARK [2][-]{subsection.5.1}{Stworzone modele}{section.5}% 24
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Algorytm C.45}{subsection.5.1}% 25
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Naiwny klasyfikator Bayesowski}{subsection.5.1}% 26
+\BOOKMARK [3][-]{subsubsection.5.1.3}{Algorytm k-najblizszych sasiad\363w}{subsection.5.1}% 27
+\BOOKMARK [2][-]{subsection.5.2}{Ocena stworzonych modeli}{section.5}% 28
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Algorytm C4.5}{subsection.5.2}% 29
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Naiwny klasyfikator Bayesowski}{subsection.5.2}% 30
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Algorytm k-najblizszych sasiad\363w}{subsection.5.2}% 31

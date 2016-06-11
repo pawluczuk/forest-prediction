@@ -1,10 +1,12 @@
-print_statistics <- function(training_data) {
+print_statistics <- function() {
   # Statisticts
+  training_data <- readRDS(system.file("train.Rda", package = "forestPredictionPkg"))
   names = c("Nazwa atrybutu", "Typ atrybutu", "Brakujące wartości", "Unikalne wartości", "Max", "Min", "Średnia", "Mediana", "Odchylenie standardowe", "Korelacja z klasą wyjściową")
 
   mx <- matrix(NA, nrow = length(names(training_data)), ncol = length(names), byrow = TRUE)
   counter <- 1
   for (i in names(training_data)) {
+    print(i)
     if (class(training_data[[paste(i)]]) == "integer") {
 
       vector <- c(i,

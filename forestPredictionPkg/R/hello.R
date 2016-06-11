@@ -20,7 +20,9 @@ hello <- function() {
   require(e1071)
   require(caret)
   require(class)
+  require(rJava)
   require(RWeka)
+  require(partykit)
 
   # read script for merging data
   if(!exists("merge_testdata", mode="function"))
@@ -38,6 +40,8 @@ hello <- function() {
     source(system.file("knn_classifier.R", package = "forestPredictionPkg"))
   if(!exists("c45_classf", mode="function"))
     source(system.file("c45_classifier.R", package = "forestPredictionPkg"))
+  if(!exists("classifier_quality", mode="function"))
+    source(system.file("quality.R", package = "forestPredictionPkg"))
 
   print("Reading training data.")
 
@@ -48,10 +52,10 @@ hello <- function() {
     training_data <- merge_testdata(training_data)
     saveRDS(training_data,file=paste(path.package("forestPredictionPkg"), "/train.Rda", sep=""))
   }
-
+  #print_statistics()
   run_classifiers()
   # print statistics
   # uncomment for Shiny document
-  # print_statistics(data)
+
 
 }
