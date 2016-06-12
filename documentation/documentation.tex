@@ -442,7 +442,16 @@ Ocena modelu polega na ocenie według dwóch kategorii:
 
 \subsubsection{Algorytm C.45}
 
-Algorytm C4.5 został zaimplementowany jako funkcja \emph{J48}  w pakiecie RWeka.
+Algorytm C4.5 został zaimplementowany jako funkcja \emph{J48}  w pakiecie RWeka. Model, oprócz danych treningowych, przyjmuje również jako argumenty opcje, którymi można dostroić algorytm. Główne parametry budowania klasyfikatora C4.5 to:
+\begin{itemize}
+\item \emph{U} - Stosowanie nieprzyciętych drzew
+\item \emph{O} - Nie zapadaj drzewa
+\item \emph{C} - Granica prawdopodobieństwa rozkładu klas dla którego przycinamy drzewo (domyślnie 0,25)
+\item \emph{M} - Minimalna liczba przykładów, aby utworzyć liść w drzewie (domyślnie 2)
+\item \emph{R} - Używaj przycinania na podstawie redukcji błędu
+\item \emph{N} - Na ile zbiorów powinny zostać podzielone dane treningowe, jeśli używamy przycinania na podstawie redukcji błędu (domyślnie 3)
+\item \emph{B} - Używaj jedynie podziałów binarnych w drzewie
+\end{itemize}
 
 Tworzenie samego modelu drzewa decyzyjnego zostało przetestowane dla różnych opcji:
 \begin{itemize}
