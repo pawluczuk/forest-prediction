@@ -694,8 +694,6 @@ g & 130 & 14 &  0 &  0 &  2 &  0 & 974 \\ \hline
     \end{tabular}
 \end{center}
  
-\textbf{Szybkość i skalowalność}
-
 \subsubsection{Algorytm k-najbliższych sąsiadów}
 
 \textbf{Trafność klasyfikacji}
@@ -754,8 +752,6 @@ g & 128 & 89 &  0 &  0 &  6  & 0 & 897 \\ \hline
     \end{tabular}
 \end{center}
 
-\textbf{Szybkość i skalowalność}
-
 \subsubsection{Naiwny klasyfikator Bayesowski}
 
 \textbf{Trafność klasyfikacji}
@@ -809,8 +805,6 @@ f &  0  & 97 &  223 & 92  & 67 & 602 &  0 \\
 g & 81 & 38 &  0  & 0  & 1  & 0 & 1000 \\ \hline
     \end{tabular}
 \end{center}
-  
-\textbf{Szybkość i skalowalność}
 
 \subsection{Podsumowanie}
 
@@ -818,5 +812,13 @@ Opierając się na wynikach na danych testowych, z klasyfikacją najlepiej porad
 Choć sklasyfikował on średnio 81\% przykładów poprawnie, z wyników poszczególnych klas widać, że różne klasy klasyfikował z inną skutecznością. Przykładowo, prawidłowo przykłady z klasy 4 w 95\% przypadków, ale  klasę 2 już tylko w 59\%.
 
 Najgorzej w porównaniu wypadł klasyfikator Bayesowski, zgodnie z przewidywaniami. W przypadku dużej ilości atrybutów, które są ze sobą skorelowane, podstawowe założenia algorytmu są niespełnione, więc trudno by algorytm dawał najlepsze wyniki.
+
+\subsection{Pakiet R}
+
+Pakiet został nazwany \emph{forestPredictionPkg}. Po zainstalowaniu pakietu ze źródeł, funkcja \emph{start()} jest odpowiedzialna za załadowanie wymaganych bibliotek oraz skryptów. 
+
+Następnie wywoływana jest w niej funkcja \emph{run\_classifiers}, która dane na zbiór treningowy i testowy, a następnie wywołuje odpowiednie generatory opracowywanych modeli. Podczas generowania modeli, generuje również statystyki dotyczące tych modeli. Następnie modele są zapisywane w postaci plików z roszerzeniem \emph{.Rds}.
+
+Po wygenerowaniu modeli, w funkcji  \emph{start()} zostaje wywołana kolejna funkcja, \emph{test\_classifiers()}, która odpowiada za przetestowanie wygenerowanych modeli na zestawie danych testowych, poprzez predykcję klas dla przykładów, a następnie opracowanie wartości miar jakości opisanych wcześniej w dokumentacji.
 
 \end{document}

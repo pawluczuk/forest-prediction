@@ -55,7 +55,7 @@ start <- function() {
   }
 
   # generate models and analyze them
-  #run_classifiers()
+  run_classifiers()
 
   # evaluate created models on testing dataset
   test_classifiers()
