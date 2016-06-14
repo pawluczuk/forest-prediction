@@ -1,20 +1,15 @@
-# Hello, world!
-#
-# This is an example function named 'hello'
-# which prints 'Hello, world!'.
-#
-# You can learn more about package authoring with RStudio at:
-#
-#   http://r-pkgs.had.co.nz/
-#
 # Some useful keyboard shortcuts for package authoring:
 #
 #   Build and Reload Package:  'Cmd + Shift + B'
 #   Check Package:             'Cmd + Shift + E'
 #   Test Package:              'Cmd + Shift + T'
 
-hello <- function() {
+start <- function() {
   require(ggplot2)
+  require(grid)
+  require(gridExtra)
+  require(corrplot)
+  require(FSelector)
   require(rmarkdown)
   require(shiny)
   require(e1071)
@@ -42,6 +37,12 @@ hello <- function() {
     source(system.file("c45_classifier.R", package = "forestPredictionPkg"))
   if(!exists("classifier_quality", mode="function"))
     source(system.file("quality.R", package = "forestPredictionPkg"))
+  if (!exists("feature_statistics", mode="function"))
+    source(system.file("feature_statistics.R", package = "forestPredictionPkg"))
+  if (!exists("multiplot", mode="function"))
+    source(system.file("multiplot.R", package = "forestPredictionPkg"))
+  if (!exists("test_classifiers", mode="function"))
+    source(system.file("test_classifiers.R", package = "forestPredictionPkg"))
 
   print("Reading training data.")
 
@@ -52,10 +53,11 @@ hello <- function() {
     training_data <- merge_testdata(training_data)
     saveRDS(training_data,file=paste(path.package("forestPredictionPkg"), "/train.Rda", sep=""))
   }
-  #print_statistics()
-  run_classifiers()
-  # print statistics
-  # uncomment for Shiny document
 
+  # generate models and analyze them
+  #run_classifiers()
+
+  # evaluate created models on testing dataset
+  test_classifiers()
 
 }

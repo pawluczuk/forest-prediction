@@ -1,5 +1,5 @@
 knn_classf <- function(training_data) {
-  checkForNeighboursNumber <- TRUE
+  checkForNeighboursNumber <- FALSE
   checkForStability <- FALSE
 
   if (checkForNeighboursNumber) {
@@ -14,25 +14,36 @@ knn_classf <- function(training_data) {
          ylab="% poprawnie sklasyfikowanych przykładów")
   }
   else {
-    nearest_neighbours <- IBk(Cover_Type ~ ., data = training_data)
+    training_data <- training_data[ , !(names(training_data) %in% c("Hillshade_3am"))]
+    nearest_neighbours <- IBk(Cover_Type ~ ., data = training_data, control=Weka_control(K=4))
   }
 
   if (checkForStability) {
     print("Checking for stability by cross-validation to classifier quality")
-    pctCorrectVector <- double(5)
+    indexes <- c(2,5,10, 100, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, (nrow(training_data)-1))
+    pctCorrectVector <- double(length(indexes))
+
     pctCorrectVector[1] <- summary(nearest_neighbours)$details["pctCorrect"]
-    for (folds in 2:5) {
+    for (folds in 1:length(pctCorrectVector)) {
       eval_j48 <- evaluate_Weka_classifier(nearest_neighbours,
-                                           numFolds = folds, complexity = FALSE,
+                                           numFolds = indexes[folds], complexity = FALSE,
                                            seed = 123, class = TRUE)
       pctCorrectVector[folds] <- eval_j48$details["pctCorrect"]
       print(folds)
       print(eval_j48$details["pctCorrect"])
     }
+    pctCorrectVector <- c(summary(nearest_neighbours)$details["pctCorrect"], pctCorrectVector)
+    indexes <- c(1,indexes)
+
     print(pctCorrectVector)
-    plot(pctCorrectVector,
-         xlab="Ilość podziałów zbioru treningowego",
-         ylab="% poprawnie sklasyfikowanych przykładów")
+
+    # save image
+    png(filename="knn-cv.png", width = 400, height = 400)
+      plot(indexes,pctCorrectVector, xlim = c(0,(nrow(training_data) + 10)), ylim = c(0,100),
+           xlab="Ilość podziałów zbioru treningowego",
+           ylab="% poprawnie sklasyfikowanych przykładów")
+    dev.off()
+
   }
 
   nearest_neighbours
