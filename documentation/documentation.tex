@@ -644,95 +644,131 @@ Modele zostały ocenione poprzez testowanie na połowie dostępnych danych treni
 
 \textbf{Trafność klasyfikacji}
 
-Accuracy : 0.7575          
-                 95\% CI : (0.7477, 0.7672)
-    No Information Rate : 0.1475          
-    P-Value [Acc > NIR] : < 2.2e-16       
-                                          
-                  Kappa : 0.7171          
- Mcnemar's Test P-Value : NA   
+
+\begin{center}
+\begin{tabular}{ | l | r | }
+\hline
+\multicolumn{2}{| c | }{Overall Statistics} \\
+\hline
+Name & Value \\ \hline
+Accuracy & 0.7575          \\
+                 95\% CI & (0.7477, 0.7672)\\
+    No Information Rate & 0.1475          \\
+    P-Value [Acc > NIR] &  < 2.2e-16       \\   
+                  Kappa & 0.7171          \\
+ Mcnemar's Test P-Value & NA   \\ \hline
+\end{tabular}
+\end{center}
  
+\begin{samepage}
 \textbf{Wyniki względem klas}
 
-Tutaj są opisane te wszystkie miary w wierszach - to sa odpowiedniki tp fp rate i tak dalej tylko inaczej nazwane \url{http://topepo.github.io/caret/other.html}, np. sensitivity to TP rate
-
-Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6 Class: 7
-Sensitivity           0.60538  0.57009  0.66289   0.9519   0.8631   0.7173   0.9346
-Specificity           0.96043  0.94530  0.94832   0.9789   0.9602   0.9511   0.9729
-Pos Pred Value        0.72581  0.63212  0.67630   0.8851   0.7864   0.7094   0.8460
-Neg Pred Value        0.93363  0.93025  0.94526   0.9917   0.9764   0.9529   0.9894
-Prevalence            0.14749  0.14153  0.14008   0.1456   0.1450   0.1427   0.1376
-Detection Rate        0.08929  0.08069  0.09286   0.1386   0.1251   0.1024   0.1286
-Detection Prevalence  0.12302  0.12765  0.13730   0.1566   0.1591   0.1443   0.1520
-Balanced Accuracy     0.78291  0.75770  0.80560   0.9654   0.9117   0.8342   0.9537
+\begin{center}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
+\hline
+&Class: 1 &Class: 2 &Class: 3 &Class: 4 &Class: 5 &Class: 6 &Class: 7 \\ \hline
+TPRate &           0.60538 &  0.57009 &  0.66289 &   0.9519 &   0.8631 &   0.7173 &   0.9346 \\
+TNRate &           0.96043 &  0.94530 &  0.94832 &   0.9789 &   0.9602 &   0.9511 &   0.9729 \\
+Pos Pred Value &        0.72581 &  0.63212 &  0.67630 &   0.8851 &   0.7864 &   0.7094 &   0.8460 \\
+Neg Pred Value &        0.93363 &  0.93025 &  0.94526 &   0.9917 &   0.9764 &   0.9529 &   0.9894 \\
+Prevalence &            0.14749 &  0.14153 &  0.14008 &   0.1456 &   0.1450 &   0.1427 &   0.1376 \\
+Detection Rate &        0.08929 &  0.08069 &  0.09286 &   0.1386 &   0.1251 &   0.1024 &   0.1286 \\
+Detection Prevalence &  0.12302 &  0.12765 &  0.13730 &   0.1566 &   0.1591 &   0.1443 &   0.1520 \\
+Balanced Accuracy &     0.78291 &  0.75770 &  0.80560 &   0.9654 &   0.9117 &   0.8342 &   0.9537 \\ \hline
+\end{tabular}
+\end{center}
+\end{samepage}
  
+\begin{samepage}
 \textbf{Macierz pomyłek}
 
-          Reference
-Prediction    1    2    3    4    5    6    7
-         1  675  193    0    0    0    0   62
-         2  233  610   18    0   87   14    3
-         3    2   34  702   37   36  227    0
-         4    0    0   91 1048    0   45    0
-         5   40  174   21    0  946   19    3
-         6   12   35  227   16   27  774    0
-         7  153   24    0    0    0    0  972
+\begin{center}
+\begin{tabular}{| l | r | r | r | r | r | r | r |}
+\hline
+&          Reference \\ \hline
+Prediction    &1    &2    &3    &4    &5&    6    &7 \\ \hline
+         1 & 675 & 193 &   0    &0 &   0 &   0 &  62\\
+         2  &233 & 610  & 18 &   0  & 87 &  14   & 3\\
+         3    &2   &34 & 702 &  37  & 36 & 227  &  0\\
+         4    &0   & 0  & 91& 1048   & 0  & 45  &  0\\
+         5   &40  &174 &  21  &  0 & 946  & 19 &   3\\
+         6   &12  & 35 & 227  & 16  & 27 & 774 &   0\\
+         7  &153 &  24  &  0 &   0  &  0 &   0 & 972\\ \hline
+\end{tabular}
+\end{center}
+\end{samepage}
 
+
+\begin{samepage}
 \textbf{Macierz pomyłek - test stabilności}
  
  \begin{center}
     \begin{tabular}{ | l | r | r | r | r | r | r | r | }
     \hline
- Klasa vs Klasa przewidziana &  a &  b &  c &  d &  e &  f &  g \\ \hline
-a & 608 & 245 &  3 &  0 & 32  & 1 & 156 \\
-b & 206 & 659 &  21 &  0 & 132 & 44 & 28 \\
-c &  0 & 10 & 707 & 113 & 24 & 247 &  0 \\
-d &  0 &  0 &  53 & 952 &  0 & 54 &  0\\
-e & 0 & 249 &  24 &  0 & 762 & 29 &  0 \\
-f &  0  & 25 & 316 & 68 & 41 & 631 &  0 \\
-g & 130 & 14 &  0 &  0 &  2 &  0 & 974 \\ \hline
+ Klasa vs Klasa przewidziana &  1 &  2 &  3 &  4 &  5 &  6 &  7 \\ \hline
+1 & 608 & 245 &  3 &  0 & 32  & 1 & 156 \\
+2 & 206 & 659 &  21 &  0 & 132 & 44 & 28 \\
+3 &  0 & 10 & 707 & 113 & 24 & 247 &  0 \\
+4 &  0 &  0 &  53 & 952 &  0 & 54 &  0\\
+5 & 0 & 249 &  24 &  0 & 762 & 29 &  0 \\
+6 &  0  & 25 & 316 & 68 & 41 & 631 &  0 \\
+7 & 130 & 14 &  0 &  0 &  2 &  0 & 974 \\ \hline
     \end{tabular}
 \end{center}
- 
+\
+\end{samepage} 
+
 \subsubsection{Algorytm k-najbliższych sąsiadów}
 
+\begin{samepage}
 \textbf{Trafność klasyfikacji}
 
-Overall Statistics
-                                          
-               Accuracy : 0.8126          
-                 95\% CI : (0.8036, 0.8213)
-    No Information Rate : 0.1475          
-    P-Value [Acc > NIR] : < 2.2e-16       
-                                          
-                  Kappa : 0.7813          
- Mcnemar's Test P-Value : NA   
+\begin{center}
+\begin{tabular}{ | l | r | }
+\hline
+\multicolumn{2}{| c | }{Overall Statistics} \\
+\hline
+Name & Value \\ \hline         
+               Accuracy & 0.8126          \\
+                 95\% CI & (0.8036, 0.8213)\\
+    No Information Rate & 0.1475        \\  
+    P-Value [Acc > NIR] & < 2.2e-16 \\         
+                  Kappa & 0.7813          \\
+ Mcnemar's Test P-Value & NA   \\ \hline
+\end{tabular}
+\end{center}
+\end{samepage}
 
 \textbf{Wyniki względem klas}
 
-                    Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6 Class: 7
-Sensitivity            0.7695   0.5850   0.8036   0.9455   0.9097   0.7405   0.9337
-Specificity            0.9483   0.9715   0.9579   0.9797   0.9675   0.9688   0.9874
-Pos Pred Value         0.7204   0.7719   0.7564   0.8882   0.8260   0.7982   0.9221
-Neg Pred Value         0.9596   0.9342   0.9677   0.9906   0.9844   0.9573   0.9894
-Prevalence             0.1475   0.1415   0.1401   0.1456   0.1450   0.1427   0.1376
-Detection Rate         0.1135   0.0828   0.1126   0.1377   0.1319   0.1057   0.1284
-Detection Prevalence   0.1575   0.1073   0.1488   0.1550   0.1597   0.1324   0.1393
-Balanced Accuracy      0.8589   0.7783   0.8807   0.9626   0.9386   0.8547   0.9605
+\begin{center}
+\begin{tabular}{ | l | r | r | r | r | r | r | r | }
+\hline
+                    &Class: 1 &Class: 2 &Class: 3 &Class: 4 &Class: 5 &Class: 6 &Class: 7\\ \hline
+TPRate          &  0.7695 &  0.5850 &  0.8036 &  0.9455 &  0.9097 &  0.7405 &  0.9337\\
+TNRate          &  0.9483 &  0.9715 &  0.9579 &  0.9797 &  0.9675 &  0.9688 &  0.9874\\
+Pos Pred Value       &  0.7204 &  0.7719 &  0.7564 &  0.8882 &  0.8260 &  0.7982 &  0.9221\\
+Neg Pred Value       &  0.9596 &  0.9342 &  0.9677 &  0.9906 &  0.9844 &  0.9573 &  0.9894\\
+Prevalence           &  0.1475 &  0.1415 &  0.1401 &  0.1456 &  0.1450 &  0.1427 &  0.1376\\
+Detection Rate       &  0.1135 &  0.0828 &  0.1126 &  0.1377 &  0.1319 &  0.1057 &  0.1284\\
+Detection Prevalence &  0.1575 &  0.1073 &  0.1488 &  0.1550 &  0.1597 &  0.1324 &  0.1393\\
+Balanced Accuracy    &  0.8589 &  0.7783 &  0.8807 &  0.9626 &  0.9386 &  0.8547 &  0.9605\\ \hline
+\end{tabular}
+\end{center}
 
 \textbf{Macierz pomyłek}
 
  \begin{center}
     \begin{tabular}{ | l | r | r | r | r | r | r | r | }
     \hline
- Klasa vs Klasa przewidziana &  a &  b &  c &  d &  e &  f &  g \\ \hline
-a &  858 & 264 &   0  &  0 &   7 &   4 &  58 \\
-b & 118 & 626 &   7 &   0 &  43 &   8 &   9 \\
-c &  0  & 17 &  851 &  40 &  28 & 189   & 0 \\
-d &  0   & 2 &  70 & 1041 &   0  & 59 &    0 \\
-e &  59  & 113  & 16 &   0 & 997 &  20  &  2 \\
-f &  10 &  36 & 115  & 20 &  21  & 799  &  0 \\
-g &  70  & 12 &   0 &   0  &  0 &   0 &  971 \\ \hline
+ Klasa vs Klasa przewidziana &  1 &  2 &  3 &  4 &  5 &  6 &  7 \\ \hline
+1 &  858 & 264 &   0  &  0 &   7 &   4 &  58 \\
+2 & 118 & 626 &   7 &   0 &  43 &   8 &   9 \\
+3 &  0  & 17 &  851 &  40 &  28 & 189   & 0 \\
+4 &  0   & 2 &  70 & 1041 &   0  & 59 &    0 \\
+5 &  59  & 113  & 16 &   0 & 997 &  20  &  2 \\
+6 &  10 &  36 & 115  & 20 &  21  & 799  &  0 \\
+7 &  70  & 12 &   0 &   0  &  0 &   0 &  971 \\ \hline
     \end{tabular}
 \end{center}
 
@@ -741,14 +777,14 @@ g &  70  & 12 &   0 &   0  &  0 &   0 &  971 \\ \hline
 \begin{center}
     \begin{tabular}{ | l | r | r | r | r | r | r | r | }
     \hline
- Klasa vs Klasa przewidziana &  a &  b &  c &  d &  e &  f &  g \\ \hline
-a & 768 & 129 &  3 &  0 & 30  & 6 & 109 \\
-b & 324 & 578 & 23 &  1 & 98 & 39 & 27 \\
-c &  1 & 11 & 912 & 66 & 12 & 99 &  0 \\
-d &  0  & 0 & 20 & 992 &  0 & 47 &  0 \\
-e & 139 & 81 & 29 &  0 & 718 & 97 &  0 \\
-f & 10 & 38 & 153 & 61 & 51 & 768 &  0 \\
-g & 128 & 89 &  0 &  0 &  6  & 0 & 897 \\ \hline
+ Klasa vs Klasa przewidziana &  1 &  2 &  3 &  4 &  5 &  6 &  7 \\ \hline
+1 & 768 & 129 &  3 &  0 & 30  & 6 & 109 \\
+2 & 324 & 578 & 23 &  1 & 98 & 39 & 27 \\
+3 &  1 & 11 & 912 & 66 & 12 & 99 &  0 \\
+4 &  0  & 0 & 20 & 992 &  0 & 47 &  0 \\
+5 & 139 & 81 & 29 &  0 & 718 & 97 &  0 \\
+6 & 10 & 38 & 153 & 61 & 51 & 768 &  0 \\
+7 & 128 & 89 &  0 &  0 &  6  & 0 & 897 \\ \hline
     \end{tabular}
 \end{center}
 
@@ -756,53 +792,69 @@ g & 128 & 89 &  0 &  0 &  6  & 0 & 897 \\ \hline
 
 \textbf{Trafność klasyfikacji}
 
-    Overall Statistics
-                                          
-               Accuracy : 0.7155          
-                 95\% CI : (0.7052, 0.7256)
-    No Information Rate : 0.1475          
-    P-Value [Acc > NIR] : < 2.2e-16       
-                                          
-                  Kappa : 0.668           
- Mcnemar's Test P-Value : NA 
+\begin{center}
+\begin{tabular}{ | l | r | }
+\hline
+\multicolumn{2}{| c | }{Overall Statistics} \\
+\hline
+Name & Value \\ \hline       
+Accuracy & 0.7155 \\
+95\% CI & (0.7052, 0.7256)\\
+    No Information Rate & 0.1475\\
+    P-Value [Acc > NIR] & < 2.2e-16\\          
+                  Kappa & 0.668           \\
+ Mcnemar's Test P-Value & NA \\ \hline
+\end{tabular}
+\end{center}
 
 \textbf{Wyniki względem klas}
 
-Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6 Class: 7
-Sensitivity           0.63229  0.54673  0.51747   0.9092   0.8002  0.69880   0.9029
-Specificity           0.94414  0.94576  0.95785   0.9701   0.9449  0.93242   0.9727
-Pos Pred Value        0.66197  0.62433  0.66667   0.8384   0.7113  0.63255   0.8406
-Neg Pred Value        0.93687  0.92677  0.92416   0.9843   0.9654  0.94896   0.9843
-Prevalence            0.14749  0.14153  0.14008   0.1456   0.1450  0.14272   0.1376
-Detection Rate        0.09325  0.07738  0.07249   0.1324   0.1160  0.09974   0.1242
-Detection Prevalence  0.14087  0.12394  0.10873   0.1579   0.1631  0.15767   0.1478
-Balanced Accuracy     0.78821  0.74625  0.73766   0.9396   0.8726  0.81561   0.9378
+\begin{center}
+\begin{tabular}{ | l | r | r | r | r | r | r | r | }
+\hline
+&Class: 1 &Class: 2 &Class: 3 &Class: 4 &Class: 5 &Class: 6 &Class: 7\\ \hline
+TPRate         &  0.63229&  0.54673&  0.51747 &  0.9092 &  0.8002&  0.69880 &  0.9029\\
+TNRate         &  0.94414&  0.94576&  0.95785 &  0.9701 &  0.9449&  0.93242 &  0.9727\\
+Pos Pred Value      &  0.66197&  0.62433&  0.66667 &  0.8384 &  0.7113&  0.63255 &  0.8406\\
+Neg Pred Value      &  0.93687&  0.92677&  0.92416 &  0.9843 &  0.9654&  0.94896 &  0.9843\\
+Prevalence          &  0.14749&  0.14153&  0.14008 &  0.1456 &  0.1450&  0.14272 &  0.1376\\
+Detection Rate      &  0.09325&  0.07738&  0.07249 &  0.1324 &  0.1160&  0.09974 &  0.1242\\
+Detection Prevalence&  0.14087&  0.12394&  0.10873 &  0.1579 &  0.1631&  0.15767 &  0.1478\\
+Balanced Accuracy   &  0.78821&  0.74625&  0.73766 &  0.9396 &  0.8726&  0.81561 &  0.9378\\ \hline
+\end{tabular}
+\end{center}
 
 \textbf{Macierz pomyłek}
 
-          Reference
-Prediction    1    2    3    4    5    6    7
-         1  705  234    0    0   33    0   93
-         2  205  585    7    0  114   22    4
-         3    1   19  548   61   19  174    0
-         4    0    0  130 1001    0   63    0
-         5   45  165   76    0  877   66    4
-         6    5   43  298   39   53  754    0
-         7  154   24    0    0    0    0  939
+\begin{center}
+\begin{tabular}{ | l | r | r | r | r | r | r | r | }
+\hline
+& Reference\\ \hline
+Prediction    &1    &2    &3    &4    &5    &6    &7\\ \hline
+         1  &705  &234  &  0  &  0  & 33   & 0   &93\\
+         2  &205  &585  &  7  &  0  &114   &22   & 4\\
+         3  &  1  & 19  &548  & 61  & 19  &174   & 0\\
+         4  &  0  &  0  &130 &1001  &  0  & 63   & 0\\
+         5  & 45  &165  & 76  &  0  &877  & 66   & 4\\
+         6  &  5  & 43  &298  & 39  & 53  &754   & 0\\
+         7  &154  & 24 &   0  &  0  &  0  &  0  &939\\ \hline
+\end{tabular}
+\end{center}
+
 
 \textbf{Macierz pomyłek - test stabilności}
 
 \begin{center}
     \begin{tabular}{ | l | r | r | r | r | r | r | r | }
     \hline
- Klasa vs Klasa przewidziana &  a &  b &  c &  d &  e &  f &  g \\ \hline
-a &  582 & 253 &  1 &  0 & 49 &  4 & 156 \\
-b &  193 & 661 & 20 &  0 & 166 & 30 & 20 \\
-c &   0 & 10 & 604 & 155 & 83 & 249 &  0 \\
-d &  0  & 0 & 58 & 950 &  0 & 51 &  0\\
-e & 56 & 285 & 14 &  0 & 657 &  52 &  0 \\
-f &  0  & 97 &  223 & 92  & 67 & 602 &  0 \\
-g & 81 & 38 &  0  & 0  & 1  & 0 & 1000 \\ \hline
+ Klasa vs Klasa przewidziana &  1 &  2 &  3 &  4 &  5 &  6 &  7 \\ \hline
+1 &  582 & 253 &  1 &  0 & 49 &  4 & 156 \\
+2 &  193 & 661 & 20 &  0 & 166 & 30 & 20 \\
+3 &   0 & 10 & 604 & 155 & 83 & 249 &  0 \\
+4 &  0  & 0 & 58 & 950 &  0 & 51 &  0\\
+5 & 56 & 285 & 14 &  0 & 657 &  52 &  0 \\
+6 &  0  & 97 &  223 & 92  & 67 & 602 &  0 \\
+7 & 81 & 38 &  0  & 0  & 1  & 0 & 1000 \\ \hline
     \end{tabular}
 \end{center}
 
